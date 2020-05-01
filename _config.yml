@@ -115,10 +115,10 @@ theme_config:
     style: source/_data/styles.styl
 
   favicon:
-    small: https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar-16.ico # /images/avatar-16.ico
-    medium: https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar-32.ico # /images/avatar-32.ico
-    apple_touch_icon: https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar-180.png
-    safari_pinned_tab:  https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar.svg # /images/avatar.svg
+    small: https://avatars3.githubusercontent.com/u/26371085?s=400&u=bb0d45205e413a4daa1ef5834fb21e905e2d937e&v=4 # /images/avatar-16.ico
+    medium: https://avatars3.githubusercontent.com/u/26371085?s=400&u=bb0d45205e413a4daa1ef5834fb21e905e2d937e&v=4 # /images/avatar-32.ico
+    apple_touch_icon: https://avatars3.githubusercontent.com/u/26371085?s=400&u=bb0d45205e413a4daa1ef5834fb21e905e2d937e&v=4
+    safari_pinned_tab:  https://avatars3.githubusercontent.com/u/26371085?s=400&u=bb0d45205e413a4daa1ef5834fb21e905e2d937e&v=4 # /images/avatar.svg
     #android_manifest: /images/manifest.json
     #ms_browserconfig: /images/browserconfig.xml
 
@@ -215,7 +215,7 @@ theme_config:
   # Sidebar Avatar
   avatar:
     # Replace the default image and set the url here.
-    url: https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar.png # /images/avatar.png #/images/avatar.gif
+    url: https://avatars3.githubusercontent.com/u/26371085?s=400&u=bb0d45205e413a4daa1ef5834fb21e905e2d937e&v=4 # /images/avatar.png #/images/avatar.gif
     # If true, the avatar will be dispalyed in circle.
     rounded: true
     # If true, the avatar will be rotated with the cursor.
@@ -424,7 +424,7 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
-  icon: https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar-32.ico # /images/avatar-32.ico
+  icon: https://avatars3.githubusercontent.com/u/26371085?s=400&u=bb0d45205e413a4daa1ef5834fb21e905e2d937e&v=4 # /images/avatar-32.ico
   template: ./source/_data/custom_atom_feed.xml
 
 permalink_pinyin:
