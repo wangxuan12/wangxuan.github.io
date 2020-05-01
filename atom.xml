@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>L的博客</title>
+  <link rel="alternate" type="text/html" href="http://yoursite.com"/>
+  <link rel="self" type="application/atom+xml" href="/atom.xml"/>
+  
+  <updated>2020-05-01T07:57:30.313Z</updated>
+  <id>http://yoursite.com/</id>
+  <icon>https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar-32.ico</icon>
+  <subtitle>探索·好奇</subtitle>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2020/05/01/hello-world/"/>
+    <id>http://yoursite.com/2020/05/01/hello-world/</id>
+    
+    
+    <author>
+    <name>L</name>
+    <uri>http://yoursite.com/about</uri>
+    </author>
+    
+    
+    <published>2020-05-01T07:57:30.313Z</published>
+    <updated>2020-05-01T07:57:30.313Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
