@@ -95,7 +95,343 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: next
 
+# next theme config
+theme_config:
+  # Remove unnecessary files after hexo generate.
+  minify: false
+  
+  # Define custom file paths.
+  # Create your custom files in site directory `source/_data` and uncomment needed files below.
+  custom_file_path:
+    #head: source/_data/head.swig
+    #header: source/_data/header.swig
+    #sidebar: source/_data/sidebar.swig
+    #postMeta: source/_data/post-meta.swig
+    #postBodyEnd: source/_data/post-body-end.swig
+    #footer: source/_data/footer.swig
+    #bodyEnd: source/_data/body-end.swig
+    #variable: source/_data/variables.styl
+    #mixin: source/_data/mixins.styl
+    style: source/_data/styles.styl
+
+  favicon:
+    small: https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar-16.ico # /images/avatar-16.ico
+    medium: https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar-32.ico # /images/avatar-32.ico
+    apple_touch_icon: https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar-180.png
+    safari_pinned_tab:  https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar.svg # /images/avatar.svg
+    #android_manifest: /images/manifest.json
+    #ms_browserconfig: /images/browserconfig.xml
+
+  footer:
+    # Specify the date when the site was setup. If not defined, current year will be used.
+    since: 2020
+
+    # Icon between year and copyright info.
+    icon:
+      # Icon name in Font Awesome. See: https://fontawesome.com/v4.7.0/icons/
+      # `heart` is recommended with animation in red (#ff0000).
+      name: heart
+      # If you want to animate the icon, set it to true.
+      animated: true
+      # Change the color of icon, using Hex Code.
+      color: "#ff4757"
+
+  # Creative Commons 4.0 International License.
+  # See: https://creativecommons.org/share-your-work/licensing-types-examples
+  # Available values of license: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
+  # You can set a language value if you prefer a translated version of CC license, e.g. deed.zh
+  # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org
+  creative_commons:
+    license: by-nc-sa
+    sidebar: false
+    post: true
+    language: deed.zh
+
+
+  # ---------------------------------------------------------------
+  # Scheme Settings
+  # ---------------------------------------------------------------
+
+  # Schemes
+  #scheme: Muse
+  #scheme: Mist
+  #scheme: Pisces
+  scheme: Gemini
+
+  # ---------------------------------------------------------------
+  # Menu Settings
+  # ---------------------------------------------------------------
+
+  # Usage: `Key: /link/ || icon`
+  # Key is the name of menu item. If the translation for this item is available, the translated text will be loaded, otherwise the Key name will be used. Key is case-senstive.
+  # Value before `||` delimiter is the target link, value after `||` delimiter is the name of Font Awesome icon.
+  # When running the site in a subdirectory (e.g. yoursite.com/blog), remove the leading slash from link value (/archives -> archives).
+  # External url should start with http:// or https://
+  menu:
+    home: / || home
+    about: /about/ || user
+    tags: /tags/ || tags
+    categories: /categories/ || th
+    archives: /archives/ || archive
+    #schedule: /schedule/ || calendar
+    #sitemap: /sitemap.xml || sitemap
+    #commonweal: /404/ || heartbeat
+
+  # Enable / Disable menu icons / item badges.
+  menu_settings:
+    icons: true
+    badges: true
+
+
+  # ---------------------------------------------------------------
+  # Sidebar Settings
+  # See: https://theme-next.org/docs/theme-settings/sidebar
+  # ---------------------------------------------------------------
+
+  sidebar:
+    # Sidebar Position.
+    #position: left
+    position: right
+
+    # Manual define the sidebar width. If commented, will be default for:
+    # Muse | Mist: 320
+    # Pisces | Gemini: 240
+    #width: 300
+
+    # Sidebar Display (only for Muse | Mist), available values:
+    #  - post    expand on posts automatically. Default.
+    #  - always  expand for all pages automatically.
+    #  - hide    expand only when click on the sidebar toggle icon.
+    #  - remove  totally remove sidebar including sidebar toggle.
+    display: post
+
+    # Sidebar padding in pixels.
+    padding: 18
+    # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).
+    offset: 12
+    # Enable sidebar on narrow view (only for Muse | Mist).
+    onmobile: false
+
+  # Sidebar Avatar
+  avatar:
+    # Replace the default image and set the url here.
+    url: https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar.png # /images/avatar.png #/images/avatar.gif
+    # If true, the avatar will be dispalyed in circle.
+    rounded: true
+    # If true, the avatar will be rotated with the cursor.
+    rotated: false
+
+  # Posts / Categories / Tags in sidebar.
+  site_state: true
+
+  # Social Links
+  # Usage: `Key: permalink || icon`
+  # Key is the link label showing to end users.
+  # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
+  social:
+    GitHub: https://github.com/wangxuan12 || github
+    # Linkedin: https://www.linkedin.com/in/%E5%AE%81%E5%81%A5-%E6%9D%8E-86a45b135/ || linkedin
+    E-Mail: mailto:ankidnn@gmail.com || envelope
+    Rss: /atom.xml || rss
+    # Steam: https://steamcommunity.com/profiles/76561198328448195/ || steam
+    #Weibo: https://weibo.com/yourname || weibo
+    #Google: https://plus.google.com/yourname || google
+    #Twitter: https://twitter.com/yourname || twitter
+    #FB Page: https://www.facebook.com/yourname || facebook
+    #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
+    #YouTube: https://youtube.com/yourname || youtube
+    #Instagram: https://instagram.com/yourname || instagram
+    #Skype: skype:yourname?call|chat || skype
+
+  # Post wordcount display settings
+  # Dependencies: https://github.com/theme-next/hexo-symbols-count-time
+  symbols_count_time:
+    separated_meta: true
+    item_text_post: true
+    item_text_total: false
+    exclude_codeblock: true
+    awl: 2
+    wpm: 300
+
+  # Use icon instead of the symbol # to indicate the tag at the bottom of the post
+  tag_icon: true
+
+  # Subscribe through Telegram Channel, Twitter, etc.
+  # Usage: `Key: permalink || icon` (Font Awesome)
+  follow_me:
+    #Twitter: https://twitter.com/username || twitter
+    #Telegram: https://t.me/channel_name || telegram
+    # WeChat: https://gitee.com/CosmosNing/MyPicGo/raw/master/images/qrcode.jpg || wechat
+    RSS: /atom.xml || rss
+
+  tagcloud:
+    # All values below are same as default, change them by yourself.
+    min: 10 # Minimun font size in px
+    max: 20 # Maxium font size in px
+    start: "#1C1C1C" # Start color (hex, rgba, hsla or color keywords)
+    end: "#4F4F4F" # End color (hex, rgba, hsla or color keywords)
+    amount: 200 # Amount of tags, change it if you have more than 200 tags
+  
+  codeblock:
+    # Code Highlight theme
+    # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic
+    # See: https://github.com/chriskempson/tomorrow-theme
+    highlight_theme: night
+    # Add copy button on codeblock
+    copy_button:
+      enable: true
+      # Show text copy result.
+      show_result: true
+      # Available values: default | flat | mac
+      style: mac
+
+  back2top:
+    enable: true
+    # Back to top in sidebar.
+    sidebar: true
+    # Scroll percent label in b2t button.
+    scrollpercent: true
+
+  # Reading progress bar
+  reading_progress:
+    enable: true
+    # Available values: top | bottom
+    position: top
+    color: "#37c6c0"
+    height: 3px
+
+  # `Follow me on GitHub` banner in the top-right corner.
+  github_banner:
+    enable: true
+    permalink: https://github.com/wangxuan12
+    title: 在 GitHub 上关注我
+
+  # Change headers hierarchy on site-subtitle (will be main site description) and on all post / page titles for better SEO-optimization.
+  seo: true
+
+  # Math Formulas Render Support
+  math:
+    # Default (true) will load mathjax / katex script on demand.
+    # That is it only render those page which has `mathjax: true` in Front-matter.
+    # If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.
+    per_page: true
+
+    # hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.
+    mathjax:
+      enable: true
+      # See: https://mhchem.github.io/MathJax-mhchem/
+      mhchem: false
+
+    # hexo-renderer-markdown-it-plus (or hexo-renderer-markdown-it with markdown-it-katex plugin) required for full Katex support.
+    katex:
+      enable: false
+      # See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex
+      copy_tex: false
+
+  # ---------------------------------------------------------------
+  # Comments Settings
+  # See: https://theme-next.org/docs/third-party-services/comments
+  # ---------------------------------------------------------------
+
+  # Multiple Comment System Support
+  comments:
+    # Available values: tabs | buttons
+    style: tabs
+    # Choose a comment system to be displayed by default.
+    # Available values: changyan | disqus | disqusjs | gitalk | livere | valine
+    active: livere
+    # Setting `true` means remembering the comment system selected by the visitor.
+    storage: true
+    # Lazyload all comment systems.
+    lazyload: false
+    # Modify texts or order for any navs, here are some examples.
+    nav:
+      #disqus:
+      #  text: Load Disqus
+      #  order: -1
+      #gitalk:
+      #  order: -2
+
+  # LiveRe comments system
+  # You can get your uid from https://livere.com/insight/myCode (General web site)
+  livere_uid: MTAyMC8zOTkzMi8xNjQ1OQ== # <your_uid>
+  
+  # Baidu Analytics
+  baidu_analytics: e9fd1f40248f9db466678920736a9fa3
+  
+  # AddThis Share. See: https://www.addthis.com
+  # Go to https://www.addthis.com/dashboard to customize your tools.
+  add_this_id: ra-5e8a99b79a6be052
+
+  # Local Search
+  # Dependencies: https://github.com/theme-next/hexo-generator-searchdb
+  local_search:
+    enable: true
+    # If auto, trigger search by changing input.
+    # If manual, trigger search by pressing enter key or search button.
+    trigger: auto
+    # Show top n results per article, show all results by setting to -1
+    top_n_per_article: 1
+    # Unescape html strings to the readable one.
+    unescape: false
+    # Preload the search data when the page loads.
+    preload: true
+
+  note:
+    # Note tag style values:
+    #  - simple    bs-callout old alert style. Default.
+    #  - modern    bs-callout new (v2-v3) alert style.
+    #  - flat      flat callout style with background, like on Mozilla or StackOverflow.
+    #  - disabled  disable all CSS styles import of note tag.
+    style: modern
+    icons: true
+    # Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).
+    # Offset also applied to label tag variables. This option can work with disabled note tag.
+    light_bg_offset: -12
+  
+  vendors:
+    # Internal path prefix.
+    _internal: lib
+
+    # Internal version: 3.1.0
+    # anime: //cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js
+    anime: https://cdn.bootcss.com/animejs/3.1.0/anime.min.js
+
+    # Internal version: 4.7.0
+    # fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css
+    # fontawesome: //cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
+    fontawesome: https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css
+    
+    # Internal version: 1.2.1
+    # velocity: //cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js
+    # velocity: //cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js
+    # velocity_ui: //cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js
+    # velocity_ui: //cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js
+    velocity: https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js
+    velocity_ui: https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: ''
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 10
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  icon: https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar-32.ico # /images/avatar-32.ico
+  template: ./source/_data/custom_atom_feed.xml
+
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
+
+sitemap:
+    path: sitemap.xml
+    rel: false
+
