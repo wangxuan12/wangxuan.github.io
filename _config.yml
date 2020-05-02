@@ -115,10 +115,10 @@ theme_config:
     style: source/_data/styles.styl
 
   favicon:
-    small: https://gitee.com/shuijing12/MyPic/blob/master/image/avatar/blog_avatar.jpeg # /images/avatar-16.ico
-    medium: https://gitee.com/shuijing12/MyPic/blob/master/image/avatar/blog_avatar.jpeg # /images/avatar-32.ico
-    apple_touch_icon: https://gitee.com/shuijing12/MyPic/blob/master/image/avatar/blog_avatar.jpeg
-    safari_pinned_tab:  https://gitee.com/shuijing12/MyPic/blob/master/image/avatar/blog_avatar.jpeg # /images/avatar.svg
+    small: https://gitee.com/shuijing12/MyPic/raw/master/image/avatar/blog_avatar.jpeg # /images/avatar-16.ico
+    medium: https://gitee.com/shuijing12/MyPic/raw/master/image/avatar/blog_avatar.jpeg # /images/avatar-32.ico
+    apple_touch_icon: https://gitee.com/shuijing12/MyPic/raw/master/image/avatar/blog_avatar.jpeg
+    safari_pinned_tab:  https://gitee.com/shuijing12/MyPic/raw/master/image/avatar/blog_avatar.jpeg # /images/avatar.svg
     #android_manifest: /images/manifest.json
     #ms_browserconfig: /images/browserconfig.xml
 
@@ -215,7 +215,7 @@ theme_config:
   # Sidebar Avatar
   avatar:
     # Replace the default image and set the url here.
-    url: https://gitee.com/shuijing12/MyPic/blob/master/image/avatar/blog_avatar.jpeg # /images/avatar.png #/images/avatar.gif
+    url: https://gitee.com/shuijing12/MyPic/raw/master/image/avatar/blog_avatar.jpeg # /images/avatar.png #/images/avatar.gif
     # If true, the avatar will be dispalyed in circle.
     rounded: true
     # If true, the avatar will be rotated with the cursor.
@@ -424,7 +424,7 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
-  icon: https://gitee.com/shuijing12/MyPic/blob/master/image/avatar/blog_avatar.jpeg # /images/avatar-32.ico
+  icon: https://gitee.com/shuijing12/MyPic/raw/master/image/avatar/blog_avatar.jpeg # /images/avatar-32.ico
   template: ./source/_data/custom_atom_feed.xml
 
 permalink_pinyin:
