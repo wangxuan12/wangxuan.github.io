@@ -415,23 +415,28 @@ theme_config:
 deploy:
   type: ''
 
+# hexo-generator-feed config
+# https://github.com/hexojs/hexo-generator-feed
 feed:
   type: atom
   path: atom.xml
   limit: 10
   hub:
-  content:
-  content_limit: 140
+  content: true
+  content_limit: 
   content_limit_delim: ' '
   order_by: -date
-  icon: https://gitee.com/shuijing12/MyPic/raw/master/image/avatar/blog_avatar.jpeg # /images/avatar-32.ico
+  icon: https://gitee.com/CosmosNing/MyPicGo/raw/master/images/avatar-32.ico # /images/avatar-32.ico
   template: ./source/_data/custom_atom_feed.xml
 
+# hexo-permalink-pinyin config
+# https://github.com/viko16/hexo-permalink-pinyin
 permalink_pinyin:
   enable: true
   separator: '-' # default: '-'
 
+# hexo-generator-sitemap config
+# https://github.com/hexojs/hexo-generator-sitemap
 sitemap:
     path: sitemap.xml
     rel: false
-
