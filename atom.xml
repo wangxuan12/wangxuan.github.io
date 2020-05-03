@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>L的博客</title>
+  <link rel="alternate" type="text/html" href="http://wangxuan12.github.io"/>
+  <link rel="self" type="application/atom+xml" href="/atom.xml"/>
+  
+  <updated>2020-05-03T09:53:09.350Z</updated>
+  <id>http://wangxuan12.github.io/</id>
+  <icon>https://gitee.com/shuijing12/MyPic/raw/master/image/avatar/blog_avatar.jpeg</icon>
+  <subtitle>探索·好奇</subtitle>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>正则表达式</title>
+    <link href="http://wangxuan12.github.io/2020/05/03/zheng-ze-biao-da-shi/"/>
+    <id>http://wangxuan12.github.io/2020/05/03/zheng-ze-biao-da-shi/</id>
+    
+    
+    <author>
+    <name>L</name>
+    <uri>http://wangxuan12.github.io/about</uri>
+    </author>
+    
+    
+    <published>2020-05-03T07:53:02.000Z</published>
+    <updated>2020-05-03T09:53:09.350Z</updated>
+    
+    <summary type="html">
+    
+      一些基本的正则操作
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://wangxuan12.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="基础" scheme="http://wangxuan12.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="正则" scheme="http://wangxuan12.github.io/tags/%E6%AD%A3%E5%88%99/"/>
+    
+      <category term="Regex" scheme="http://wangxuan12.github.io/tags/Regex/"/>
+    
+  </entry>
+  
+</feed>

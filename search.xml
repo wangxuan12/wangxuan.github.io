@@ -1,3 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
+  <entry>
+    <title>正则表达式</title>
+    <url>/2020/05/03/zheng-ze-biao-da-shi/</url>
+    <content><![CDATA[<blockquote>
+<p>正则表达式元字符分类</p>
+<ol>
+<li>基础</li>
+<li>空白符</li>
+<li>量词</li>
+<li>范围</li>
+<li>边界</li>
+<li>贪婪&amp;非贪婪</li>
+<li>环视</li>
+<li>子组</li>
+</ol>
+</blockquote>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><code>.</code> 任意字符（换行除外）<br><code>\d</code> 任意数字 <code>\D</code> 任意非数字<br><code>\w</code> 任意数字字母下划线 <code>\W</code> 数字、字母和下划线以外的任意字符<br><code>\s</code> 任意空白符 <code>\S</code> 任意非空白符</p>
+<h2 id="空白符"><a href="#空白符" class="headerlink" title="空白符"></a>空白符</h2><p><code>\r</code> 回车符<br><code>\n</code> 换行符<br><code>\f</code> 换页符<br><code>\t</code> 制表符<br><code>\v</code> 垂直制表符</p>
+<h2 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h2><p><code>*</code> 含义： 0 到多次<br><code>+</code> 含义： 1 到多次<br><code>?</code> 含义： 0 到 1 次<br><code>{m}</code> 含义：出现 m 次<br><code>{m,n}</code> 含义： m 到 n 次<br><code>{,n}</code> 其中  m 不写代表 0 ，至多 n 次<br><code>{m,}</code> 其中  n 不写代表无穷大，至少 m 次</p>
+<h2 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h2><p><code>|</code> 或，如 ab|bc 代表 ab 或 bc<br><code>[...]</code> 多选一，括号中任意单个元素<br><code>[a-z]</code> 匹配 a 到 z 之间任意单个元素（按 ASCII 表，包含 a , z ）<br><code>[^...]</code> 取反，不能是括号中的任意单个元素</p>
+<h3 id="举例验证手机号"><a href="#举例验证手机号" class="headerlink" title="举例验证手机号"></a>举例验证手机号</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>[<span class="number">3456789</span>]\d&#123;<span class="number">9</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>[<span class="number">3</span><span class="number">-9</span>]\d&#123;<span class="number">9</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>[^<span class="number">012</span>]\d&#123;<span class="number">9</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h2><p><code>^</code> 匹配行的开始，多行模式时，可以匹配任意行开头<br><code>$</code> 匹配行的结束，多行模式时，可以匹配任意行结尾<br><code>\b</code> 匹配单词边界<br><code>\A</code> 仅匹配整个字符串的开始，不支持多行模式<br><code>\Z</code> 仅匹配整个字符的结束，不支持多行模式</p>
+<h3 id="b的事例"><a href="#b的事例" class="headerlink" title="\b的事例"></a>\b的事例</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">REGULAR EXPRESSION:</span><br><span class="line">\bthe\b</span><br><span class="line"></span><br><span class="line">TEST STRING:</span><br><span class="line">`the` cat is in `the` hat</span><br><span class="line">there is a cat</span><br></pre></td></tr></table></figure>
+
+<h3 id="A的事例"><a href="#A的事例" class="headerlink" title="\A的事例"></a>\A的事例</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">REGULAR EXPRESSION:</span><br><span class="line">\Athe</span><br><span class="line"></span><br><span class="line">TEST STRING:</span><br><span class="line">`the` cat is in the hat</span><br><span class="line">the cat is in the hat</span><br></pre></td></tr></table></figure>
+
+<h3 id="的事例"><a href="#的事例" class="headerlink" title="^的事例"></a>^的事例</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">REGULAR EXPRESSION:</span><br><span class="line">^the</span><br><span class="line"></span><br><span class="line">TEST STRING:</span><br><span class="line">`the` cat is in the hat</span><br><span class="line">`the` cat is in the hat</span><br></pre></td></tr></table></figure>
+
+<h2 id="贪婪-amp-非贪婪"><a href="#贪婪-amp-非贪婪" class="headerlink" title="贪婪&amp;非贪婪"></a>贪婪&amp;非贪婪</h2><p>贪婪：表示次数的量词，默认是贪婪的，默认尽可能多地去匹配<br>非贪婪：<code>量词</code> 元字符后加 <code>?</code> 找出长度最小且满足要求的</p>
+<h3 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">REGULAR EXPRESSION:</span><br><span class="line"><span class="string">".+"</span></span><br><span class="line"></span><br><span class="line">TEST STRING:</span><br><span class="line">`<span class="string">"the little cat"</span> is a toy, it looks <span class="string">"a little bas"</span>.`</span><br></pre></td></tr></table></figure>
+
+<h3 id="非贪婪匹配"><a href="#非贪婪匹配" class="headerlink" title="非贪婪匹配"></a>非贪婪匹配</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">REGULAR EXPRESSION:</span><br><span class="line"><span class="string">".+?"</span></span><br><span class="line"></span><br><span class="line">TEST STRING:</span><br><span class="line">`<span class="string">"the little cat"</span>` is a toy, it looks `<span class="string">"a little bas"</span>`.</span><br></pre></td></tr></table></figure>
+
+<h2 id="环视"><a href="#环视" class="headerlink" title="环视"></a>环视</h2><p><code>X(?&lt;=Y)</code> 匹配前面是 Y 的 X<br><code>X(?&lt;!Y)</code> 匹配前面不是 Y 的 X<br><code>X(?=X)</code> 匹配后面是 Y 的 X<br><code>X(?!Y)</code> 匹配后面不是 Y 的 X </p>
+<h2 id="子组"><a href="#子组" class="headerlink" title="子组"></a>子组</h2><p><code>(regex)</code> 将 regex 保存成一个子组<br><code>(?p&lt;name&gt;regex)</code> 命名子组，将 regex 保存成名称为 name 的子组<br><code>(?:regex)</code> 仅分组，不保存这个子组<br><code>\</code> 分组编号 重复每个子组</p>
+<p><a href="https://regex101.com" target="_blank" rel="noopener">正则验证</a></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>正则</tag>
+        <tag>Regex</tag>
+      </tags>
+  </entry>
 </search>
