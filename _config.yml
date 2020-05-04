@@ -107,6 +107,14 @@ ignore:
 #   post_views: true           # 开启内容阅读次数
 #   post_views_icon: fa fa-eye       # 内容页阅读数的图标
 
+symbols_count_time:
+ #文章内是否显示
+  symbols: true
+  time: true
+ # 网页底部是否显示
+  total_symbols: true
+  total_time: true
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
@@ -477,11 +485,3 @@ footer:
     enable: true     # 开启主题驱动
     version: true    # 开启主题版本号
   # custom_text: Hosted by <a target="_blank" rel="external nofollow" href="https://pages.coding.me"><b>Coding Pages</b></a> # 这里的底部标识是为了添加coding page服务时的版权声明 打开注释就可以看到底部有一个 hosted by coding pages
-
-# symbols_count_time:
-#  #文章内是否显示
-#   symbols: true
-#   time: true
-#  # 网页底部是否显示
-#   total_symbols: true
-#   total_time: true
