@@ -1341,7 +1341,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #5db00b;
+  background: #b4ffbb;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2875,17 +2875,17 @@ mjx-container + br {
   }
 }
 :root {
-  --body-bg-color: #282828;
-  --content-bg-color: #333;
-  --card-bg-color: #555;
-  --text-color: #ccc;
-  --link-color: #ccc;
-  --link-hover-color: #eee;
-  --brand-color: #ddd;
-  --brand-hover-color: #ddd;
+  --body-bg-color: #121212;
+  --content-bg-color: #1d1d1d;
+  --card-bg-color: #282828;
+  --text-color: #e1e1e1;
+  --link-color: #e1e1e1;
+  --link-hover-color: #fff;
+  --brand-color: #fff;
+  --brand-hover-color: #fff;
   --table-row-odd-bg-color: #282828;
   --table-row-hover-bg-color: #363636;
-  --menu-item-bg-color: #555;
+  --menu-item-bg-color: #333;
 }
 img {
   opacity: 0.75;
