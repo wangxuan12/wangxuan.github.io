@@ -267,7 +267,7 @@ theme_config:
   # Key is the link label showing to end users.
   # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
   social:
-    GitHub: https://github.com/wangxuan12 || fa fa-github
+    GitHub: https://github.com/wangxuan12 || fab fa-github
     E-Mail: mailto:ankidnn@gmail.com || fa fa-envelope
     Rss: /atom.xml || fa fa-rss
     # Steam: https://steamcommunity.com/profiles/76561198328448195/ || steam
@@ -419,26 +419,26 @@ theme_config:
     # Offset also applied to label tag variables. This option can work with disabled note tag.
     light_bg_offset: -12
   
-  vendors:
-    # Internal path prefix.
-    _internal: lib
+vendors:
+  # Internal path prefix.
+  _internal: lib
 
-    # Internal version: 3.1.0
-    # anime: //cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js
-    anime: https://cdn.bootcss.com/animejs/3.1.0/anime.min.js
+  # Internal version: 3.1.0
+  # anime: //cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js
+  anime: https://cdn.bootcss.com/animejs/3.1.0/anime.min.js
 
-    # Internal version: 4.7.0
-    # fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css
-    # fontawesome: //cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
-    fontawesome: https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css
-    
-    # Internal version: 1.2.1
-    # velocity: //cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js
-    # velocity: //cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js
-    # velocity_ui: //cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js
-    # velocity_ui: //cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js
-    velocity: https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js
-    velocity_ui: https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js
+  # Internal version: 4.7.0
+  # fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css
+  # fontawesome: //cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
+  fontawesome: https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css
+  
+  # Internal version: 1.2.1
+  # velocity: //cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js
+  # velocity: //cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js
+  # velocity_ui: //cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js
+  # velocity_ui: //cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js
+  velocity: https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js
+  velocity_ui: https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
