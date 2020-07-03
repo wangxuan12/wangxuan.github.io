@@ -20,31 +20,38 @@
     var CONFIG = {"hostname":"wangxuan12.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="编程·学习·生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="L的博客">
-<meta property="og:url" content="http://wangxuan12.github.io/index.html">
+  <meta name="description" content="OkHttp的核心：  OkHttpClient：配置中心 Dispather：进行线程的调度 RealCall：进行实际的请求执行 RealInterceptorChain：使用责任链模式，逐级调用拦截器，最终返回Response   基本使用直接盗用了OkHttp官方的:chestnut: 12345val client &#x3D; OkHttpClient()val request &#x3D; Reque">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OkHttp源码分析">
+<meta property="og:url" content="http://wangxuan12.github.io/2020/07/03/okhttp-yuan-ma-fen-xi/index.html">
 <meta property="og:site_name" content="L的博客">
-<meta property="og:description" content="编程·学习·生活">
+<meta property="og:description" content="OkHttp的核心：  OkHttpClient：配置中心 Dispather：进行线程的调度 RealCall：进行实际的请求执行 RealInterceptorChain：使用责任链模式，逐级调用拦截器，最终返回Response   基本使用直接盗用了OkHttp官方的:chestnut: 12345val client &#x3D; OkHttpClient()val request &#x3D; Reque">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1916953-fc6439af2bfefddc.jpg">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/10/19/1668c5c04f04eab2">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/10/19/1668c5c6363ea20f">
+<meta property="article:published_time" content="2020-07-03T11:50:18.000Z">
+<meta property="article:modified_time" content="2020-07-03T11:57:06.829Z">
 <meta property="article:author" content="L">
-<meta property="article:tag" content="个人博客;编程;学习;生活">
+<meta property="article:tag" content="源码分析">
+<meta property="article:tag" content="http">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1916953-fc6439af2bfefddc.jpg">
 
-<link rel="canonical" href="http://wangxuan12.github.io/">
+<link rel="canonical" href="http://wangxuan12.github.io/2020/07/03/okhttp-yuan-ma-fen-xi/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>L的博客</title>
+  <title>OkHttp源码分析 | L的博客</title>
   
 
 
@@ -195,9 +202,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -213,10 +221,9 @@
       <meta itemprop="name" content="L的博客">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/03/okhttp-yuan-ma-fen-xi/" class="post-title-link" itemprop="url">OkHttp源码分析</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          OkHttp源码分析
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -238,7 +245,14 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -263,7 +277,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
+        <blockquote>
 <p>OkHttp的核心：</p>
 <ol>
 <li><code>OkHttpClient</code>：配置中心</li>
@@ -380,122 +394,82 @@
 <li><a href="https://juejin.im/post/5bc89fbc5188255c713cb8a5#heading-10" target="_blank" rel="noopener">Andriod 网络框架 OkHttp 源码解析</a></li>
 </ol>
 
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangxuan12.github.io/2020/05/03/zheng-ze-biao-da-shi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitee.com/shuijing12/MyPic/raw/master/image/avatar/blog_avatar.jpeg">
-      <meta itemprop="name" content="L">
-      <meta itemprop="description" content="编程·学习·生活">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="L的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/03/zheng-ze-biao-da-shi/" class="post-title-link" itemprop="url">正则表达式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-03 15:53:02" itemprop="dateCreated datePublished" datetime="2020-05-03T15:53:02+08:00">2020-05-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-03 19:57:06" itemprop="dateModified" datetime="2020-07-03T19:57:06+08:00">2020-07-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>一些基本的正则操作</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/03/zheng-ze-biao-da-shi/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>L
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wangxuan12.github.io/2020/07/03/okhttp-yuan-ma-fen-xi/" title="OkHttp源码分析">http://wangxuan12.github.io/2020/07/03/okhttp-yuan-ma-fen-xi/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" rel="tag"><i class="fa fa-tag"></i> 源码分析</a>
+              <a href="/tags/http/" rel="tag"><i class="fa fa-tag"></i> http</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/03/zheng-ze-biao-da-shi/" rel="prev" title="正则表达式">
+      <i class="fa fa-chevron-left"></i> 正则表达式
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zOTkzMi8xNjQ1OQ=="></div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -542,6 +516,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本使用"><span class="nav-number">1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OKHttp-请求的大致流程"><span class="nav-number">2.</span> <span class="nav-text">OKHttp 请求的大致流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dispatcher-调度器"><span class="nav-number">3.</span> <span class="nav-text">Dispatcher 调度器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OkHttpClient-配置中心"><span class="nav-number">4.</span> <span class="nav-text">OkHttpClient 配置中心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RealCall-请求执行者"><span class="nav-number">5.</span> <span class="nav-text">RealCall 请求执行者</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RealInterceptorChain"><span class="nav-number">6.</span> <span class="nav-text">RealInterceptorChain</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RetryAndFollowUpInterceptor"><span class="nav-number">6.1.</span> <span class="nav-text">RetryAndFollowUpInterceptor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BridgeInterceptor"><span class="nav-number">6.2.</span> <span class="nav-text">BridgeInterceptor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CacheInterceptor"><span class="nav-number">6.3.</span> <span class="nav-text">CacheInterceptor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConnectInterceptor"><span class="nav-number">6.4.</span> <span class="nav-text">ConnectInterceptor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CallServerInterceptor"><span class="nav-number">6.5.</span> <span class="nav-text">CallServerInterceptor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -711,6 +686,21 @@
 
   
 
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
 
 </body>
 </html>
