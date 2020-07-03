@@ -1,4 +1,14 @@
-# OkHttp源码分析
+---
+toc: true
+date: 2020-07-03 19:50:18
+title: OkHttp源码分析
+description:
+tags:
+- 源码分析
+- http
+categories:
+- Android
+---
 
 >OkHttp的核心：
 >
@@ -25,7 +35,7 @@ client.newCall(request).execute()
 
 先上图：
 
-<img src="https://upload-images.jianshu.io/upload_images/1916953-fc6439af2bfefddc.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/685/format/webp" style="zoom:70%;" />
+<img src="https://upload-images.jianshu.io/upload_images/1916953-fc6439af2bfefddc.jpg" style="zoom:70%;" />
 
 使用`OkHttp`进行请求的时候可以使用`execute` 或者 `enqueue`，这两者之间的区别就是`execute`会直接就进行请求，而`enqueue`会经过`Dispather`进行调度后在请求。
 
@@ -250,7 +260,7 @@ internal inner class AsyncCall(
 
 下面来通过一个时序图，再来对比一下`execute`和`enqueue`两种实现方法的不同：
 
-<img src="https://user-gold-cdn.xitu.io/2018/10/19/1668c5c04f04eab2?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" style="zoom:70%; background-color: #f4f5f5;" />
+<img src="https://user-gold-cdn.xitu.io/2018/10/19/1668c5c04f04eab2" style="zoom:70%; background-color: #f4f5f5;" />
 
 ## OkHttpClient 配置中心
 
@@ -434,7 +444,7 @@ internal inner class AsyncCall(
 
 接着来看看OkHttp责任链的执行流程：
 
-<img src="https://user-gold-cdn.xitu.io/2018/10/19/1668c5c6363ea20f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" style="zoom:70%; background-color: #f4f5f5;" />
+<img src="https://user-gold-cdn.xitu.io/2018/10/19/1668c5c6363ea20f" style="zoom:70%; background-color: #f4f5f5;" />
 
 
 
