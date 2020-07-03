@@ -35,7 +35,7 @@ client.newCall(request).execute()
 
 先上图：
 
-<img src="https://upload-images.jianshu.io/upload_images/1916953-fc6439af2bfefddc.jpg" style="zoom:70%;" />
+<img src="https://gitee.com/shuijing12/MyPic/raw/master/image/android/okhttp_01.jpg" style="zoom:70%;" />
 
 使用`OkHttp`进行请求的时候可以使用`execute` 或者 `enqueue`，这两者之间的区别就是`execute`会直接就进行请求，而`enqueue`会经过`Dispather`进行调度后在请求。
 
@@ -260,7 +260,7 @@ internal inner class AsyncCall(
 
 下面来通过一个时序图，再来对比一下`execute`和`enqueue`两种实现方法的不同：
 
-<img src="https://user-gold-cdn.xitu.io/2018/10/19/1668c5c04f04eab2" style="zoom:70%; background-color: #f4f5f5;" />
+<img src="https://gitee.com/shuijing12/MyPic/raw/master/image/android/okhttp_02.png" style="zoom:70%; background-color: #f4f5f5;" />
 
 ## OkHttpClient 配置中心
 
@@ -444,9 +444,7 @@ internal inner class AsyncCall(
 
 接着来看看OkHttp责任链的执行流程：
 
-<img src="https://user-gold-cdn.xitu.io/2018/10/19/1668c5c6363ea20f" style="zoom:70%; background-color: #f4f5f5;" />
-
-
+<img src="https://gitee.com/shuijing12/MyPic/raw/master/image/android/okhttp_03.png" style="zoom:70%; background-color: #f4f5f5;" />
 
 ### RetryAndFollowUpInterceptor
 
