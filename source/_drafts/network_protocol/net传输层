@@ -1,0 +1,122 @@
+# 传输层
+
+
+
+## UDP协议
+
+
+
+### TCP和UDP有那些区别？
+
+> TCP是面向连接的，UDP是面向无连接的。
+
+**所谓的建立连接，是为了再客服端和服务端维护连接，而建立一定的数据结构来维护双方交互的状态，用这样的数据结构来保证所谓的面向连接的特性。**
+
+1. TCP提供可靠交互。
+2. TCP是面向字节流的。
+3. TCP是可以有拥塞控制的。
+4. TCP其实是一个由状态服务。
+
+
+
+### UDP的三大使用场景
+
+1. 需要资源少，在网络情况比较好的内网，或者对于丢包不敏感的应用。
+2. 不需要一对一沟通， 建立连接，而是可以广播的应用。
+3. 需要处理速度快，时延低，可以容忍少数丢包，但是要求即便网络拥塞，也毫不退缩，一往无前的时候。
+
+
+
+## TCP协议
+
+
+
+### TCP包头格式
+
+<img src="D:\project\blog_image\642947c94d6682a042ad981bfba39fbf.jpg" alt="tcp" style="zoom:20%;" />
+
+**TCP特点：** 保证顺序，保证不丢包，流量控制，拥塞控制。
+
+**TCP状态位：** **SYN**是发起一个连接，**ACK**是回复，**RST**是重新连接，**FIN**是结束连接等。
+
+
+
+### TCP的三次握手
+
+<img src="D:\project\blog_image\c067fe62f49e8152368c7be9d91adc08.jpg" alt="tcp的三次握手" style="zoom:18%;" />
+
+
+
+### TCP的四次挥手
+
+<img src="D:\project\blog_image\bf1254f85d527c77cc4088a35ac11d13.jpg" alt="TCP的四次挥手" style="zoom:18%;" />
+
+
+
+### TCP状态机
+
+<img src="D:\project\blog_image\fd45f9ad6ed575ea6bfdaafeb3bfb62a.jpg" alt="tcp状态机" style="zoom:20%;" />
+
+
+
+## TCP协议的实现
+
+
+
+### 滑动窗口
+
+**发送端窗口：**
+
+<img src="D:\project\blog_image\16dcd6fb8105a1caa75887b5ffa0bd7b.jpg" alt="发送端窗口" style="zoom:50%;" />
+
+**接受端窗口：**
+
+<img src="D:\project\blog_image\f7b1d3bc6b6d8e55f0951e82294c8ba4.jpg" alt="接收端窗口" style="zoom:50%;" />
+
+**顺序问题：**每个包加上一个序列号
+
+**丢包问题：**
+
+1. 超时重传：超时间隔加倍。每一次重传，都会使超时时间间隔加倍。两次超时，就说明网络环境差，不宜频繁反复发送。
+2. 快速重传：比如6和8都到了，接收端就会发送6的ACK要求下一个是7。当客户端收到3个重复的ACK，就会不等超时，立即重发。
+
+**流量控制：**根据发送端发送速度和接收端处理速度，动态的调整窗口大小。
+
+**拥塞控制：**为了避免包丢失和超时重传
+
+
+
+### Socket
+
+Socket编程是针对网络层和传输层的。
+
+在网络层Socket需要指定IP地址。
+
+在传输层Socket需要指定端口号。
+
+
+
+> 基于TCP的Socket程序函数调用过程
+
+内核中会有两个Socket，一个是用来监听的Socket，一个是用来传数据的Socket。
+
+每个Socket会有两个队列，一个是发送队列，一个接受队列。
+
+<img src="D:\project\blog_image\77d5eeb659d5347874bda5e8f711f692.jpg" alt="socket程序函数调用过程" style="zoom:18%;" />
+
+
+
+> 基于UDP的Socket程序函数调用过程
+
+UDP不需要维护连接状态，只需要一个Socket。
+
+<img src="D:\project\blog_image\778687d1a02ffc0c24078c33be2ac1ef.jpg" alt="udp" style="zoom:18%;" />
+
+
+
+**C10K问题：**一台机器要维护1万个连接，就需要创建1万个进程或线程，这是操作系统所不能承受的。
+
+**C10K解决方式：**IO多路复用，一个线程维护多个Socket。epoll被称为解决C0K问题的利器。
+
+**epoll：**事件通知机制，通过注册callback函数的方式，当某个文件描述符发生变化的时候，就会主动通知。epoll添加一个Socket的时候，是将其加入到一个红黑树中，当一个Socket来了事件的时候，通过epoll调用callback通知它。
+
